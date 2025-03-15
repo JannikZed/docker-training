@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend API Call</title>
+    <script>
+        function getCurrentTime() {
+            fetch("/api/v1/time")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('currentTime').innerText = data;
+                })
+                .catch(error => console.error('Error:', error));
+        }
+        
+        function getLastTime() {
+            fetch("/api/v1/last_time")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('lastTime').innerText = data;
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</head>
+<body>
+    <button onclick="getCurrentTime()">Get current time</button>
+    <div id="currentTime"></div>
+    <button onclick="getLastTime()">Get last time</button>
+    <div id="lastTime"></div>
+</body>
+</html>
